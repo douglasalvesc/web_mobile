@@ -1,4 +1,3 @@
-// ...existing code...
 document.addEventListener('DOMContentLoaded', function () {
   // Live Alert
   var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
