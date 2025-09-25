@@ -1,130 +1,386 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/funcoes.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css" />
 
-    <script>
-        function soma(a, b) {
-            alert(a + b);
-        }
-    </script>
+  <title>Aula 2 WebMobile</title>
+  <script></script>
 </head>
+
 <body>
-    <h1>primeiro cabeçalho</h1>
-    <h2>segundo cabeçalho</h2>
-    <h3>terceiro cabeçalho</h3>
+  <!-- Accordion -->
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          Accordion Item #1
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the first item's accordion body.</strong>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+          aria-expanded="false" aria-controls="collapseTwo">
+          Accordion Item #2
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <p>paragrafo muito fofo 😀😀😀😀😀😀😀</p>
+  <!-- Alerts -->
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 
-    <img src="img/img.jpg" title="Mob Pscho" alt="Mob e seu mestre" width="500">
+  <div id="liveAlertPlaceholder"></div>
+  <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+  Show live alert
+  </button>
 
-    <a href="http://www.uft.edu.br" target="_blank" class="linkb"> Link para o site da UFT</a>
-    <h2>Lista Ordenada</h2>
-    <ol>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+  <!-- badge -->
+  <h3>Example heading <span class="badge text-bg-secondary">New</span></h3>
+  <h4>Example heading <span class="badge text-bg-secondary">New</span></h4>
+  <h5>Example heading <span class="badge text-bg-secondary">New</span></h5>
+
+  <button type="button" class="btn btn-primary">
+    Notifications <span class="badge text-bg-secondary">4</span>
+  </button>
+
+  <button type="button" class="btn btn-primary position-relative">
+    Inbox
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      99+
+      <span class="visually-hidden">unread messages</span>
+    </span>
+  </button>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Home</li>
     </ol>
+  </nav>
 
-    <h2>Lista não ordenada</h2>
-    <ul>
-        <li>Item A</li>
-        <li>Item B</li>
-        <li>Item C</li>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Library</li>
+    </ol>
+  </nav>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Library</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+  </nav>
+
+  <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Library</li>
+    </ol>
+  </nav>
+
+  <nav style="--bs-breadcrumb-divider: ''" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Library</li>
+    </ol>
+  </nav>
+
+  <!-- Buttons -->
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-secondary">Secondary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-light">Light</button>
+  <button type="button" class="btn btn-dark">Dark</button>
+  <button type="button" class="btn btn-link">Link</button>
+
+  <!-- Button group -->
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary">Left</button>
+    <button type="button" class="btn btn-primary">Middle</button>
+    <button type="button" class="btn btn-primary">Right</button>
+  </div>
+
+  <!-- Card -->
+  <div class="card" style="width: 18rem;">
+    <img src="img/img.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+        content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+
+  <!-- Carousel -->
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/img.jpg" class="d-block w-100" alt="Slide 1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/img.jpg" class="d-block w-100" alt="Slide 2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/img.jpg" class="d-block w-100" alt="Slide 3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Close button -->
+  <button type="button" class="btn-close" aria-label="Close"></button>
+
+  <!-- Collapse -->
+  <p>
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+      aria-controls="collapseExample">
+      Link with href
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      Some placeholder content for the collapse component.
+    </div>
+  </div>
+
+  <!-- Dropdowns -->
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown button
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
     </ul>
+  </div>
 
-    <table>
-        <tr>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>Cidade</th>
-        </tr>
-        <tr>
-            <td>João</td>
-            <td>25</td>
-            <td>São Paulo</td>
-        </tr>
-        <tr>
-            <td>Maria</td>
-            <td>30</td>
-            <td>Rio de Janeiro</td>
-        </tr>
-        <tr>
-            <td>Ana</td>
-            <td>22</td>
-            <td>Belo Horizonte</td>
-        </tr>
-    </table>
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item">A simple default list group item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
 
-    <form action="/cadastro/" method="post">
-        <label for="login">Login</label>
-        <input type="text" id="login" name="login">
-        <label for="senha">Senha</label>
-        <input type="password" id="senha" name="senha">
-        <label for="idade">Idade</label>
-        <input type="number" min="0" max="130" step="1" id="idade" name="idade">
-        <label for="sexo">Sexo</label>
-        <input type="radio" name="sexo" value="1" checked> Masculino
-        <input type="radio" name="sexo" value="2"> Feminino
+  <!-- Modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <input type="checkbox" name="veiculo1" value="bike">Eu tenho uma bike
-        <input type="checkbox" name="veiculo2" value="carro">Eu tenho um carro
+  <!-- Navs & tabs -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>
 
-        <input type="checkbox" id="termos" name="termos">
-        <label for="termos">Aceito os termos</label>
-        <label for="cursos">Cursos</label>
-        <select name="cursos">
-            <option value="curso1">Direito</option>
-            <option value="curso2">Medicina</option>
-            <option value="curso3">Engenharia</option>
-        </select>
+  <!-- Offcanvas -->
+  <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+    aria-controls="offcanvasExample">
+    Link with href
+  </a>
+  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+    aria-controls="offcanvasExample">
+    Button with data-bs-target
+  </button>
 
-        <textarea name="sobre" id="sobre" placeholder="Fale um pouco sobre você..." rows="30" ></textarea>
-    
-        Data de nascimento:<input type="date" name="data" id="data">
-        Auto Complete: <input list="animes">
-        <datalist id="animes">
-            <option>One Piece</option>
-            <option>Naruto</option>
-            <option>Dragon Ball</option>
-            <option>Bleach</option>
-            <option>Fullmetal Alchemist: Brotherhood</option>
-            <option>Attack on Titan</option>
-            <option>Demon Slayer</option>
-            <option>Jujutsu Kaisen</option>
-            <option>My Hero Academia</option>
-            <option>Death Note</option>
-            <option>Cowboy Bebop</option>
-            <option>Neon Genesis Evangelion</option>
-            <option>Hunter x Hunter</option>
-            <option>Chainsaw Man</option>
-            <option>Mob Psycho 100</option>
-            <option>Vinland Saga</option>
-            <option>Spy x Family</option>
-            <option>Tokyo Ghoul</option>
-            <option>JoJo's Bizarre Adventure</option>
-            <option>Sailor Moon</option>
-            <option>Fairy Tail</option>
-            <option>Black Clover</option>
-            <option>Re:Zero</option>
-            <option>Sword Art Online</option>
-            <option>Haikyuu!!</option>
-            <option>Kuroko's Basketball</option>
-            <option>Code Geass</option>
-            <option>Trigun</option>
-            <option>Inuyasha</option>
-            <option>Gintama</option>
-        </datalist>
-        <input type="hidden" name="country" value="Brasil">
-        <input type="reset" value="Limpar">
-        <input type="submit" value="Enviar">
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists,
+        etc.
+      </div>
+      <div class="dropdown mt-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-        <button type="button" onclick="alert('hello world')">Botão 1</button>
-        <button type="button" onclick="soma(5, 10);">botão 2</button>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    </form>
+  <!-- Pagination -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+
+  <!-- Popovers -->
+  <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title"
+    data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+
+  <!-- Progress -->
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+      aria-valuemax="100">25%</div>
+  </div>
+
+  <!-- Scrollspy -->
+  <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="#scrollspyHeading1">First</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#scrollspyHeading2">Second</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#scrollspyHeading3">Third</a>
+      </li>
+    </ul>
+  </nav>
+  <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0"
+    style="height: 200px; overflow: auto;">
+    <h4 id="scrollspyHeading1">First heading</h4>
+    <p>...</p>
+    <h4 id="scrollspyHeading2">Second heading</h4>
+    <p>...</p>
+    <h4 id="scrollspyHeading3">Third heading</h4>
+    <p>...</p>
+  </div>
+
+  <!-- Spinners -->
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <!-- Toasts -->
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="img/img.jpg" class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+
+  <!-- Tooltips -->
+  <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top"
+    title="Tooltip on top">
+    Tooltip on top
+  </button>
 </body>
+
 </html>
