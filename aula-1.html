@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        function soma(a, b) {
+            alert(a + b);
+        }
+    </script>
+</head>
+<body>
+    <h1>primeiro cabeçalho</h1>
+    <h2>segundo cabeçalho</h2>
+    <h3>terceiro cabeçalho</h3>
+
+    <p>paragrafo muito fofo 😀😀😀😀😀😀😀</p>
+
+    <img src="img/img.jpg" title="Mob Pscho" alt="Mob e seu mestre" width="500">
+
+    <a href="http://www.uft.edu.br" target="_blank" class="linkb"> Link para o site da UFT</a>
+    <h2>Lista Ordenada</h2>
+    <ol>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ol>
+
+    <h2>Lista não ordenada</h2>
+    <ul>
+        <li>Item A</li>
+        <li>Item B</li>
+        <li>Item C</li>
+    </ul>
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Cidade</th>
+        </tr>
+        <tr>
+            <td>João</td>
+            <td>25</td>
+            <td>São Paulo</td>
+        </tr>
+        <tr>
+            <td>Maria</td>
+            <td>30</td>
+            <td>Rio de Janeiro</td>
+        </tr>
+        <tr>
+            <td>Ana</td>
+            <td>22</td>
+            <td>Belo Horizonte</td>
+        </tr>
+    </table>
+
+    <form action="/cadastro/" method="post">
+        <label for="login">Login</label>
+        <input type="text" id="login" name="login">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha">
+        <label for="idade">Idade</label>
+        <input type="number" min="0" max="130" step="1" id="idade" name="idade">
+        <label for="sexo">Sexo</label>
+        <input type="radio" name="sexo" value="1" checked> Masculino
+        <input type="radio" name="sexo" value="2"> Feminino
+
+        <input type="checkbox" name="veiculo1" value="bike">Eu tenho uma bike
+        <input type="checkbox" name="veiculo2" value="carro">Eu tenho um carro
+
+        <input type="checkbox" id="termos" name="termos">
+        <label for="termos">Aceito os termos</label>
+        <label for="cursos">Cursos</label>
+        <select name="cursos">
+            <option value="curso1">Direito</option>
+            <option value="curso2">Medicina</option>
+            <option value="curso3">Engenharia</option>
+        </select>
+
+        <textarea name="sobre" id="sobre" placeholder="Fale um pouco sobre você..." rows="30" ></textarea>
+    
+        Data de nascimento:<input type="date" name="data" id="data">
+        Auto Complete: <input list="animes">
+        <datalist id="animes">
+            <option>One Piece</option>
+            <option>Naruto</option>
+            <option>Dragon Ball</option>
+            <option>Bleach</option>
+            <option>Fullmetal Alchemist: Brotherhood</option>
+            <option>Attack on Titan</option>
+            <option>Demon Slayer</option>
+            <option>Jujutsu Kaisen</option>
+            <option>My Hero Academia</option>
+            <option>Death Note</option>
+            <option>Cowboy Bebop</option>
+            <option>Neon Genesis Evangelion</option>
+            <option>Hunter x Hunter</option>
+            <option>Chainsaw Man</option>
+            <option>Mob Psycho 100</option>
+            <option>Vinland Saga</option>
+            <option>Spy x Family</option>
+            <option>Tokyo Ghoul</option>
+            <option>JoJo's Bizarre Adventure</option>
+            <option>Sailor Moon</option>
+            <option>Fairy Tail</option>
+            <option>Black Clover</option>
+            <option>Re:Zero</option>
+            <option>Sword Art Online</option>
+            <option>Haikyuu!!</option>
+            <option>Kuroko's Basketball</option>
+            <option>Code Geass</option>
+            <option>Trigun</option>
+            <option>Inuyasha</option>
+            <option>Gintama</option>
+        </datalist>
+        <input type="hidden" name="country" value="Brasil">
+        <input type="reset" value="Limpar">
+        <input type="submit" value="Enviar">
+
+        <button type="button" onclick="alert('hello world')">Botão 1</button>
+        <button type="button" onclick="soma(5, 10);">botão 2</button>
+
+    </form>
+</body>
+</html>
