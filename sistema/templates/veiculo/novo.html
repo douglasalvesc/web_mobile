@@ -1,0 +1,39 @@
+{% extends "../base.html"%}
+
+{% block titulo %}Cadastro de Veículos{% endblock %}
+{%block conteudo %}
+<form action="/veiculo/novo/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-6">
+            <label form="marca" class="form-label">Marca</label>
+            {{ form.marca }}
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="col-6">
+            <label form="modelo" class="form-label">Modelo</label>
+            {{ form.modelo }}
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-4">
+            <label for="ano" class="form-label">Ano</label>
+            {{ form.ano }}
+        </div>
+        <div class="col-4">
+            <label for="cor" class="form-label">Cor</label>
+            {{ form.cor }}
+        </div>
+        <div class="col-4">
+            <label for="combustivel" class="form-label">Combustível</label>
+            {{ form.combustivel }}
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
