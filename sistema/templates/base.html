@@ -3,14 +3,63 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.jpg' %}"/>
 
     <title>{% block titulo %} Desenvolvimento webmobile {% endblock %}</title>
 
     <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'bootstrap-5.3.8/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script type="text/javascript" src="{% static 'bootstrap-5.3.8/js/bootstrap.bundle.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        #menu-superior {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 0;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem !important;
+        }
+        
+        .nav-link:hover {
+            color: #0d6efd !important;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: #0d6efd !important;
+            border-bottom: 2px solid #0d6efd;
+        }
+        
+        .btn-logout {
+            position: relative;
+            font-weight: 500;
+        }
+        
+        .user-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 0.5rem;
+        }
+        
+        .card-header {
+            border-top-left-radius: 0.5rem !important;
+            border-top-right-radius: 0.5rem !important;
+            border-bottom: none;
+        }
+    </style>
 
     {% block css_local %}{% endblock %}
     {% block javascript_local %}{% endblock %}
@@ -20,34 +69,46 @@
     <div id="menu-superior">
         {% block menu_superior %}
         <div class="container">
-            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
+            <header class="d-flex flex-wrap align-items-center justify-content-between py-3">
+              <div class="col-md-3 mb-2 mb-md-0">
+                  <a href="/veiculo" class="d-inline-flex align-items-center text-decoration-none">
+                      <i class="fas fa-car fs-4 text-primary me-2"></i>
+                      <span class="fs-5 fw-bold text-dark">Sistema Veículos</span>
+                  </a>
+              </div>
+              
               <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li>
-                    <a href="/veiculo" class="nav-link px-2 link-secondary">
+                    <a href="/veiculo" class="nav-link px-3 link-dark">
+                        <i class="fas fa-list me-1"></i>
                         Listar veículos
                     </a>
                 </li>
                 <li>
-                    <a href="/veiculo/novo" class="nav-link px-2 link-dark">
+                    <a href="/veiculo/novo" class="nav-link px-3 link-dark">
+                        <i class="fas fa-plus-circle me-1"></i>
                         Cadastrar veículo
                     </a>
                 </li>
                 <li>
-                    <a href="/anuncio" class="nav-link px-2 link-dark">
+                    <a href="/anuncio" class="nav-link px-3 link-dark">
+                        <i class="fas fa-bullhorn me-1"></i>
                         Anúncios
                     </a>
                 </li>
               </ul>
+              
               <div class="col-md-3 text-end">
-                <a href="/logout" type="button" class="btn btn-secondary position-relative">
+                <a href="/logout" class="btn btn-outline-secondary btn-logout">
+                    <i class="fas fa-sign-out-alt me-1"></i>
                     Logout
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary user-badge">
                         {{user}}
                     </span>
                 </a>
               </div>
             </header>
-          </div>
+        </div>
         {% endblock %}
     </div>
 
