@@ -1,61 +1,78 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block titulo %}Listagem de Veículos{% endblock %}
 
-{% block titulo %}Listagem de Veículos{% endblock %}
+<!-- {% if v.foto %}
+<img src="{{v.foto.url}}" class="card-img-top" alt="">
+{% else %}
+    Veiculo sem foto
+{% endif %} -->
 
 {% block conteudo %}
 <div class="container py-4">
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white py-3">
-            <h3 class="mb-0">
-                <i class="fas fa-car me-2"></i>Lista de Veículos
-            </h3>
-        </div>
-        <div class="card-body p-4">
-            {% if lista_veiculos %}
-                <div class="table-responsive">
-                    <table class="table table-hover table-striped align-middle mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th class="fw-bold"><i class="fas fa-tag me-2"></i>Marca</th>
-                                <th class="fw-bold"><i class="fas fa-car-side me-2"></i>Modelo</th>
-                                <th class="fw-bold"><i class="fas fa-calendar me-2"></i>Ano</th>
-                                <th class="fw-bold"><i class="fas fa-palette me-2"></i>Cor</th>
-                                <th class="fw-bold"><i class="fas fa-gas-pump me-2"></i>Combustível</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for veiculo in lista_veiculos %}
-                            <tr>
-                                <td class="fw-semibold">{{ veiculo.get_marca_display }}</td>
-                                <td>{{ veiculo.modelo }}</td>
-                                <td>{{ veiculo.ano }}</td>
-                                <td>{{ veiculo.get_cor_display }}</td>
-                                <td>
-                                    <span class="badge bg-info text-dark">
-                                        {{ veiculo.get_combustivel_display }}
-                                    </span>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mt-4 pt-3 border-top">
-                    <p class="text-muted mb-0">
-                        <i class="fas fa-info-circle me-2"></i>
-                        <strong>Total de veículos cadastrados:</strong> {{ lista_veiculos|length }}
-                    </p>
-                </div>
-            {% else %}
-                <div class="alert alert-info d-flex align-items-center mb-0" role="alert">
-                    <i class="fas fa-info-circle me-3 fs-3"></i>
-                    <div>
-                        <h5 class="alert-heading mb-1">Nenhum veículo cadastrado</h5>
-                        <p class="mb-0">Comece cadastrando seu primeiro veículo através do menu "Cadastrar veículo".</p>
-                    </div>
-                </div>
-            {% endif %}
-        </div>
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white py-3">
+      <h3 class="mb-0"><i class="fas fa-car me-2"></i>Lista de Veículos</h3>
     </div>
+    <div class="card-body p-4">
+      {% if lista_veiculos %}
+      <div class="row">
+        {% for veiculo in lista_veiculos %}
+        <div class="col-md-12 mb-4">
+          <div class="card">
+            <div class="row g-0">
+              <div class="col-md-4">
+                {% if veiculo.foto %}
+                <img
+                  src="{{ veiculo.foto.url }}"
+                  class="img-fluid rounded-start"
+                  alt="Foto do {{ veiculo.modelo }}"
+                />
+                {% else %}
+                <div
+                  class="d-flex align-items-center justify-content-center h-100 bg-light"
+                >
+                  <span class="text-muted">Sem foto</span>
+                </div>
+                {% endif %}
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    {{ veiculo.get_marca_display }} {{ veiculo.modelo }}
+                  </h5>
+                  <p class="card-text">
+                    <strong>Ano:</strong> {{ veiculo.ano }}<br />
+                    <strong>Cor:</strong> {{ veiculo.get_cor_display }}<br />
+                    <strong>Combustível:</strong>
+                    <span class="badge bg-info text-dark"
+                      >{{ veiculo.get_combustivel_display }}</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="mt-4 pt-3 border-top">
+        <p class="text-muted mb-0">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Total de veículos cadastrados:</strong> {{ lista_veiculos|length }}
+        </p>
+      </div>
+      {% else %}
+      <div class="alert alert-info d-flex align-items-center mb-0" role="alert">
+        <i class="fas fa-info-circle me-3 fs-3"></i>
+        <div>
+          <h5 class="alert-heading mb-1">Nenhum veículo cadastrado</h5>
+          <p class="mb-0">
+            Comece cadastrando seu primeiro veículo através do menu "Cadastrar
+            veículo".
+          </p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
 </div>
 {% endblock %}

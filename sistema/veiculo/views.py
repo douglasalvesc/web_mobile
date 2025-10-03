@@ -5,6 +5,9 @@ from veiculo.forms import FormularioVeiculo
 from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.views.generic import View
+from django.http import FileResponse, Http404
+from django.core.exceptions import ObjectDoesNotExist
 
 class ListarVeiculos(LoginRequiredMixin, ListView):
     """
@@ -27,3 +30,17 @@ class CriarVeiculos(LoginRequiredMixin, CreateView):
     template_name = 'veiculo/novo.html'
     #success_url = '/veiculo' ou
     success_url = reverse_lazy('listar-veiculos') #prova: porque essa linha é melhor?
+
+class FotoVeiculo(View):
+    """
+    View para retornar a foto do veículos
+    """
+
+    def get(self, request, arquivo):
+        try:
+            veiculo = Veiculo.objects.get(foto=f'veiculo/fotos/{arquivo}')
+            return FileResponse(veiculo.foto)
+        except ObjectDoesNotExist:
+            raise Http404("Foto não encontrada ou acesso não autorizado!")
+        except Exception as exception:
+            raise exception
