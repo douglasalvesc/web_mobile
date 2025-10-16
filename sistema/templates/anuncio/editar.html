@@ -1,0 +1,54 @@
+{% extends "../base.html" %} 
+
+{% block titulo %}Editar Anúncio{% endblock %} 
+
+{% block conteudo %}
+<div class="container py-5">
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+      <h2 class="fw-bold mb-0">Editar Anúncio</h2>
+    </div>
+    <div class="card-body p-5">
+
+      {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>Por favor, corrija os erros abaixo:</strong>
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>{{ field|escape }}: {{ error|escape }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+      {% endif %}
+
+      <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="{{ form.veiculo.id_for_label }}" class="form-label">Veículo</label>
+          {{ form.veiculo }}
+        </div>
+        <div class="mb-3">
+          <label for="{{ form.valor.id_for_label }}" class="form-label">Valor do Anúncio</label>
+          {{ form.valor }}
+        </div>
+        <div class="mb-3">
+          <label for="{{ form.descricao.id_for_label }}" class="form-label">Descrição</label>
+          {{ form.descricao }}
+        </div>
+        <div class="form-check mb-4">
+          {{ form.ativo }}
+          <label class="form-check-label" for="{{ form.ativo.id_for_label }}">
+            Anúncio Ativo
+          </label>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a href="{% url 'meus-anuncios' %}" class="btn btn-secondary me-md-2">Cancelar</a>
+          <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

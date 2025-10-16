@@ -31,6 +31,10 @@ class CriarVeiculos(LoginRequiredMixin, CreateView):
     #success_url = '/veiculo' ou
     success_url = reverse_lazy('listar-veiculos') #prova: porque essa linha é melhor?
 
+    def form_valid(self, form):
+        form.instance.proprietario = self.request.user
+        return super().form_valid(form)
+
 class FotoVeiculo(View):
     """
     View para retornar a foto do veículos

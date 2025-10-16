@@ -7,4 +7,4 @@ class FormularioVeiculo(ModelForm):
     """
     class Meta:
         model = Veiculo
-        exclude = []
+        exclude = ['proprietario']
