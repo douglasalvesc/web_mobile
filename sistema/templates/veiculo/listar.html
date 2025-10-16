@@ -44,9 +44,16 @@
                     <strong>Cor:</strong> {{ veiculo.get_cor_display }}<br />
                     <strong>Combustível:</strong>
                     <span class="badge bg-info text-dark"
-                      >{{ veiculo.get_combustivel_display }}</span
-                    >
+                      >{{ veiculo.get_combustivel_display }}</span>
                   </p>
+                  <div class="mt-3">
+                    <a href="{% url 'editar-veiculo' veiculo.pk %}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-edit me-1"></i> Editar
+                    </a>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-url="{% url 'excluir-veiculo' veiculo.pk %}">
+                        <i class="fas fa-trash me-1"></i> Excluir
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -61,18 +68,52 @@
         </p>
       </div>
       {% else %}
-      <div class="alert alert-info d-flex align-items-center mb-0" role="alert">
-        <i class="fas fa-info-circle me-3 fs-3"></i>
-        <div>
-          <h5 class="alert-heading mb-1">Nenhum veículo cadastrado</h5>
-          <p class="mb-0">
-            Comece cadastrando seu primeiro veículo através do menu "Cadastrar
-            veículo".
-          </p>
-        </div>
+      <div class="text-center py-5">
+        <i class="fas fa-car-side fa-3x text-muted mb-3"></i>
+        <h4 class="text-muted">Nenhum veículo cadastrado ainda.</h4>
+        <p class="text-muted">Seja o primeiro a adicionar um veículo!</p>
+        <a href="{% url 'criar-veiculos' %}" class="btn btn-primary mt-3">
+          <i class="fas fa-plus-circle me-2"></i>Cadastrar Novo Veículo
+        </a>
       </div>
       {% endif %}
     </div>
   </div>
 </div>
+
+<!-- Modal de Confirmação de Exclusão -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Exclusão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza de que deseja excluir este veículo? Esta ação não pode ser desfeita.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <form id="deleteForm" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Excluir</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript_local %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var confirmDeleteModal = document.getElementById('confirmDeleteModal');
+    confirmDeleteModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        var url = button.getAttribute('data-url');
+        var form = document.getElementById('deleteForm');
+        form.action = url;
+    });
+});
+</script>
 {% endblock %}

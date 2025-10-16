@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, UpdateView, DeleteView
 from veiculo.models import Veiculo
 from veiculo.forms import FormularioVeiculo
 from datetime import datetime
@@ -44,3 +44,20 @@ class FotoVeiculo(View):
             raise Http404("Foto não encontrada ou acesso não autorizado!")
         except Exception as exception:
             raise exception
+
+class EditarVeiculo(LoginRequiredMixin, UpdateView):
+    """
+    View para a edição de veículos
+    """
+    model = Veiculo
+    form_class = FormularioVeiculo
+    template_name = 'veiculo/editar.html'
+    success_url = reverse_lazy('listar-veiculos')
+
+class ExcluirVeiculo(LoginRequiredMixin, DeleteView):
+    """
+    View para a exclusão de veículos
+    """
+    model = Veiculo
+    template_name = 'veiculo/veiculo_confirm_delete.html'
+    success_url = reverse_lazy('listar-veiculos')

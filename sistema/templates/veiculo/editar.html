@@ -1,0 +1,206 @@
+{% extends "../base.html"%}
+
+{% block titulo %}Edição de Veículo{% endblock %}
+
+{% block css_local %}
+<style>
+    select, input[type="text"], input[type="number"], textarea, input[type="file"] {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        border-radius: 0.375rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    
+    select:focus, input[type="text"]:focus, input[type="number"]:focus, textarea:focus, input[type="file"]:focus {
+        color: #212529;
+        background-color: #fff;
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+
+    .form-label {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #495057;
+        display: block;
+    }
+    
+    .form-label i {
+        color: #0d6efd;
+        margin-right: 0.5rem;
+    }
+    
+    .form-card {
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+    }
+    
+    .form-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem;
+        text-align: center;
+    }
+    
+    .form-header h3 {
+        color: white;
+        margin: 0;
+        font-size: 1.75rem;
+        font-weight: 700;
+    }
+    
+    .form-header i {
+        font-size: 3rem;
+        color: white;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    
+    .form-body {
+        padding: 2.5rem;
+    }
+    
+    .form-section {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-section-title {
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #6c757d;
+        margin-bottom: 1rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .btn-submit {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        padding: 0.75rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0.5rem 1rem rgba(102, 126, 234, 0.4);
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    }
+    
+    .btn-cancel {
+        padding: 0.75rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        border: 2px solid #6c757d;
+        transition: all 0.2s;
+    }
+    
+    .btn-cancel:hover {
+        background-color: #6c757d;
+        color: white;
+        transform: translateY(-2px);
+    }
+</style>
+{% endblock %}
+
+{% block conteudo %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9 col-xl-8">
+            <div class="form-card">
+                <div class="form-header">
+                    <i class="fas fa-edit"></i>
+                    <h3>Editar Veículo</h3>
+                    <p class="text-white-50 mb-0 mt-2">Atualize as informações do veículo</p>
+                </div>
+                
+                <div class="form-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="form-section">
+                            <div class="form-section-title">
+                                <i class="fas fa-info-circle me-1"></i> Informações Básicas
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_marca" class="form-label">
+                                        <i class="fas fa-tag"></i>Marca
+                                    </label>
+                                    {{ form.marca }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_modelo" class="form-label">
+                                        <i class="fas fa-car-side"></i>Modelo
+                                    </label>
+                                    {{ form.modelo }}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <div class="form-section-title">
+                                <i class="fas fa-cog me-1"></i> Especificações
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="id_ano" class="form-label">
+                                        <i class="fas fa-calendar"></i>Ano
+                                    </label>
+                                    {{ form.ano }}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="id_cor" class="form-label">
+                                        <i class="fas fa-palette"></i>Cor
+                                    </label>
+                                    {{ form.cor }}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="id_combustivel" class="form-label">
+                                        <i class="fas fa-gas-pump"></i>Combustível
+                                    </label>
+                                    {{ form.combustivel }}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <div class="form-section-title">
+                                <i class="fas fa-camera me-1"></i> Foto do Veículo
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_foto" class="form-label">
+                                    <i class="fas fa-image"></i>Selecione uma foto para alterar
+                                </label>
+                                {{ form.foto }}
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex gap-3 justify-content-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <i class="fas fa-save me-2"></i>Salvar Alterações
+                            </button>
+                            <a href="{% url 'listar-veiculos' %}" class="btn btn-outline-secondary btn-cancel">
+                                <i class="fas fa-times me-2"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

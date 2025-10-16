@@ -62,7 +62,6 @@
     </style>
 
     {% block css_local %}{% endblock %}
-    {% block javascript_local %}{% endblock %}
 </head>
 
 <body>
@@ -115,5 +114,8 @@
     <div id="conteudo">
         {% block conteudo %}{% endblock %}
     </div>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    {% block javascript_local %}{% endblock %}
 </body>
 </html>
