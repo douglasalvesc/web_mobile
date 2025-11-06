@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 from django.contrib.auth.models import User
 from veiculo.consts import OPCOES_MARCAS, OPCOES_CORES, OPCOES_COMBUSTIVEIS
 
@@ -11,5 +12,12 @@ class Veiculo(models.Model):
     combustivel = models.SmallIntegerField(choices=OPCOES_COMBUSTIVEIS)
     foto = models.ImageField(blank=True, null=True, upload_to='veiculo/fotos')
 
+    @property
+    def veiculo_novo(self):
+        return self.ano == datetime.now().year
+    
     def __str__(self):
         return f'{self.get_marca_display()} {self.modelo} ({self.ano})'
+    
+    def anos_de_uso(self):
+        return datetime.now().year - self.ano
