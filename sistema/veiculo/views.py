@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from veiculo.models import Veiculo
 from veiculo.forms import FormularioVeiculo
 from datetime import datetime
@@ -8,6 +8,10 @@ from django.urls import reverse_lazy
 from django.views.generic import View
 from django.http import FileResponse, Http404
 from django.core.exceptions import ObjectDoesNotExist
+from veiculo.serializers import SerializadorVeiculo
+from rest_framework.authentication import TokenAuthentication
+from rest_framework import permissions
+from rest_framework.generics import ListAPIView
 
 class ListarVeiculos(LoginRequiredMixin, ListView):
     """
@@ -65,3 +69,15 @@ class ExcluirVeiculo(LoginRequiredMixin, DeleteView):
     model = Veiculo
     template_name = 'veiculo/veiculo_confirm_delete.html'
     success_url = reverse_lazy('listar-veiculos')
+
+class APIListarVeiculos(ListAPIView):
+    """API para listar veículos (DRF)."""
+
+
+    serializer_class = SerializadorVeiculo
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+
+    def get_queryset(self):
+        return Veiculo.objects.all()

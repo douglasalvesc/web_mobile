@@ -1,0 +1,25 @@
+:host {
+	display: block;
+	--ion-background-color: var(--ion-background-color);
+}
+
+.login-form {
+	padding: 16px;
+}
+
+.error {
+	color: var(--ion-color-danger);
+	margin: 6px 16px 0 16px;
+}
+
+.links {
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 16px;
+}
+
+.links a {
+	color: var(--ion-color-primary);
+	text-decoration: none;
+	font-size: 0.95rem;
+}

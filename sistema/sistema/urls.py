@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from sistema.views import Login, Logout
+from sistema.views import Login, Logout, LoginAPI
+from veiculo.views import APIListarVeiculos
 
 urlpatterns = [
     path('', Login.as_view(), name='login'),
@@ -24,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('veiculo/', include('veiculo.urls'), name='veiculo'),
     path('anuncio/', include('anuncio.urls'), name='anuncio'),
+    path('autenticacao-api/', LoginAPI.as_view())
 ]

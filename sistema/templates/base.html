@@ -10,55 +10,21 @@
 
     <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Tailwind CDN (class-based dark mode) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {},
+            }
+        }
+    </script>
 
     <style>
-        body {
-            background-color: #f8f9fa;
-            min-height: 100vh;
-        }
-        
-        #menu-superior {
-            background-color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 0;
-        }
-        
-        .nav-link {
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem !important;
-        }
-        
-        .nav-link:hover {
-            color: #0d6efd !important;
-            transform: translateY(-2px);
-        }
-        
-        .nav-link.active {
-            color: #0d6efd !important;
-            border-bottom: 2px solid #0d6efd;
-        }
-        
-        .btn-logout {
-            position: relative;
-            font-weight: 500;
-        }
-        
-        .user-badge {
-            font-size: 0.75rem;
-            padding: 0.25rem 0.5rem;
-        }
-        
-        .card {
-            border: none;
-            border-radius: 0.5rem;
-        }
-        
-        .card-header {
-            border-top-left-radius: 0.5rem !important;
-            border-top-right-radius: 0.5rem !important;
-            border-bottom: none;
-        }
+        /* Keep legacy styles but prefer Tailwind classes in templates */
+        body { min-height: 100vh; }
+        .user-badge { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
     </style>
 
     {% block css_local %}{% endblock %}
@@ -68,44 +34,72 @@
     <div id="menu-superior">
         {% block menu_superior %}
         <div class="container">
-            <header class="d-flex flex-wrap align-items-center justify-content-between py-3">
+            <header class="d-flex flex-wrap items-center justify-between py-3">
               <div class="col-md-3 mb-2 mb-md-0">
-                  <a href="/veiculo" class="d-inline-flex align-items-center text-decoration-none">
-                      <i class="fas fa-car fs-4 text-primary me-2"></i>
-                      <span class="fs-5 fw-bold text-dark">Sistema Veículos</span>
+                  <a href="/veiculo" class="d-inline-flex items-center no-underline">
+                      <!-- Logo icon (simple SVG car-like shape) -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13l2-4h14l2 4v4a1 1 0 01-1 1h-1a2 2 0 11-4 0H9a2 2 0 11-4 0H4a1 1 0 01-1-1v-4z" />
+                      </svg>
+                      <span class="fs-5 fw-bold text-dark dark:text-white">Veloz Veículos</span>
                   </a>
               </div>
               
               <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li>
-                    <a href="/veiculo" class="nav-link px-3 link-dark">
-                        <i class="fas fa-list me-1"></i>
+                    <a href="/veiculo" class="nav-link px-3 text-gray-800 dark:text-gray-200 flex items-center">
+                        <!-- list icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
                         Listar veículos
                     </a>
                 </li>
                 <li>
-                    <a href="/veiculo/novo" class="nav-link px-3 link-dark">
-                        <i class="fas fa-plus-circle me-1"></i>
+                    <a href="/veiculo/novo" class="nav-link px-3 text-gray-800 dark:text-gray-200 flex items-center">
+                        <!-- plus-circle icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" fill="none" />
+                        </svg>
                         Cadastrar veículo
                     </a>
                 </li>
                 <li>
-                    <a href="/anuncio" class="nav-link px-3 link-dark">
-                        <i class="fas fa-bullhorn me-1"></i>
+                    <a href="/anuncio" class="nav-link px-3 text-gray-800 dark:text-gray-200 flex items-center">
+                        <!-- megaphone/annouce icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-yellow-600 dark:text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5l9 4v6l-9 4V5z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 9v6l6-3-6-3z" />
+                        </svg>
                         Anúncios
                     </a>
                 </li>
               </ul>
               
-              <div class="col-md-3 text-end">
-                <a href="/logout" class="btn btn-outline-secondary btn-logout">
-                    <i class="fas fa-sign-out-alt me-1"></i>
-                    Logout
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary user-badge">
-                        {{user}}
-                    </span>
-                </a>
-              </div>
+                            <div class="col-md-3 text-end flex items-center justify-end space-x-3">
+                                <!-- Theme toggle -->
+                                <button id="theme-toggle" class="inline-flex items-center px-3 py-1 border rounded text-sm bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100" title="Alternar tema">
+                                    <!-- sun/moon (we'll toggle visibility via JS) -->
+                                    <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M10 3.5a.75.75 0 01.75-.75h.5a.75.75 0 010 1.5h-.5A.75.75 0 0110 3.5zM10 16.25a.75.75 0 01.75-.75h.5a.75.75 0 010 1.5h-.5a.75.75 0 01-.75-.75zM3.5 10a.75.75 0 01-.75-.75v-.5a.75.75 0 011.5 0v.5A.75.75 0 013.5 10zM16.25 10a.75.75 0 01-.75-.75v-.5a.75.75 0 011.5 0v.5a.75.75 0 01-.75.75zM5.28 5.28a.75.75 0 010-1.06l.35-.35a.75.75 0 011.06 1.06l-.35.35a.75.75 0 01-1.06 0zM14.36 14.36a.75.75 0 010-1.06l.35-.35a.75.75 0 111.06 1.06l-.35.35a.75.75 0 01-1.06 0zM5.28 14.72a.75.75 0 01-1.06 0l-.35-.35a.75.75 0 011.06-1.06l.35.35a.75.75 0 010 1.06zM14.36 5.64a.75.75 0 01-1.06 0l-.35-.35a.75.75 0 111.06-1.06l.35.35a.75.75 0 010 1.06zM10 7a3 3 0 100 6 3 3 0 000-6z" />
+                                    </svg>
+                                    <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-200 hidden" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M17.293 13.293A8 8 0 116.707 2.707a7 7 0 1010.586 10.586z" />
+                                    </svg>
+                                </button>
+
+                                <a href="/logout" class="btn btn-outline-secondary btn-logout relative inline-flex items-center px-3 py-1 border rounded text-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100">
+                                        <!-- logout icon -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
+                                        </svg>
+                                        Logout
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary user-badge ml-2">
+                                                {{user}}
+                                        </span>
+                                </a>
+                            </div>
             </header>
         </div>
         {% endblock %}
@@ -116,6 +110,7 @@
     </div>
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/funcoes.js' %}"></script>
     {% block javascript_local %}{% endblock %}
 </body>
 </html>
