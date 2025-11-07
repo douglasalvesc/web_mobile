@@ -9,3 +9,12 @@ class SerializadorVeiculo(serializers.ModelSerializer):
     class Meta:
         model = Veiculo
         exclude = []
+        
+    def get_nome_marca(self, instancia):
+        return instancia.get_marca_display()
+    
+    def get_nome_cor(self, instancia):
+        return instancia.get_marca_display()
+    
+    def get_nome_combustivel(self, instancia):
+        return instancia.get_marca_display()

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Veículos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="!lista_veiculos || lista_veiculos.length === 0" class="ion-text-center">
+    <ion-icon name="car-outline" style="font-size:48px; color: #999"></ion-icon>
+    <h3>Nenhum veículo cadastrado ainda.</h3>
+    <p>Adicione veículos pelo sistema web.</p>
+  </div>
+
+  <ion-grid *ngIf="lista_veiculos && lista_veiculos.length > 0">
+    <ion-row *ngFor="let v of lista_veiculos">
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-content>
+            <div class="card-inner">
+              <div class="thumb">
+                <img *ngIf="v.foto" [src]="v.foto" alt="foto" />
+                <div *ngIf="!v.foto" class="no-photo">Sem foto</div>
+              </div>
+              <div class="info">
+                <h3>{{ v.marca }} {{ v.modelo }}</h3>
+                <p><strong>Ano:</strong> {{ v.ano }} • <strong>Cor:</strong> {{ v.cor }}</p>
+                <p><strong>Combustível:</strong> {{ v.combustivel }}</p>
+                <div class="actions">
+                  <ion-button fill="outline" size="small" (click)="mostrarNaoImplementado()">Editar</ion-button>
+                  <ion-button color="danger" fill="clear" size="small" (click)="excluirVeiculo(v.id)">Excluir</ion-button>
+                </div>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

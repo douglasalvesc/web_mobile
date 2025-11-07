@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import path
-from .views import CriarVeiculos, ListarVeiculos, FotoVeiculo, EditarVeiculo, ExcluirVeiculo, APIListarVeiculos
+from .views import CriarVeiculos, ListarVeiculos, FotoVeiculo, EditarVeiculo, ExcluirVeiculo, APIListarVeiculos,APIDeletarVeiculos
 
 urlpatterns = [
     path('', ListarVeiculos.as_view(), name='listar-veiculos'),
@@ -10,4 +10,5 @@ urlpatterns = [
     path('fotos/<str:arquivo>/', FotoVeiculo.as_view(), name='fotos-veiculos'),
     # API endpoint moved here so it is available under /veiculo/api/
     path('api/', APIListarVeiculos.as_view(), name='api-listar-veiculo'),
+    path('api/deletar/<int:pk>/', APIDeletarVeiculos.as_view(), name='api-deletar-veiculos')
 ]
